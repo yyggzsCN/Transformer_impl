@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from model import BigramLanguageModel
+from model import TransformerLanguageModel
 
 # Hyperparameters
 block_size = 32
@@ -57,7 +57,7 @@ def estimate_loss():
     return out
 
 # Initialize model
-model = BigramLanguageModel(vocab_size, n_embd, block_size, n_layer, n_head, dropout)
+model = TransformerLanguageModel(vocab_size, n_embd, block_size, n_layer, n_head, dropout)
 model = model.to(device)
 
 # Try to load checkpoint if it exists

@@ -62,7 +62,7 @@ class Block(nn.Module):
         x = x + self.ffwd(self.ln2(x))
         return x
 
-class BigramLanguageModel(nn.Module):
+class TransformerLanguageModel(nn.Module):
     def __init__(self, vocab_size, n_embd, block_size, n_layer, n_head, dropout):
         super().__init__()
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd)

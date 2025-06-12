@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from model import BigramLanguageModel
+from model import TransformerLanguageModel
 
 # Load the checkpoint
 checkpoint = torch.load('model_checkpoint.pt')
@@ -23,7 +23,7 @@ decoder = lambda x: ''.join([itos[i] for i in x])
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Initialize model
-model = BigramLanguageModel(vocab_size, n_embd, block_size, n_layer, n_head, dropout=0.0)
+model = TransformerLanguageModel(vocab_size, n_embd, block_size, n_layer, n_head, dropout=0.0)
 model.load_state_dict(checkpoint['model_state_dict'])
 model = model.to(device)
 model.eval()  # Set to evaluation mode
